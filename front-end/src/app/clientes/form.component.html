@@ -1,0 +1,36 @@
+<div class="card">
+<div class="card-header">{{ titulo }}</div>
+<div class="Card-body">
+    <!-- <form (ngSubmit)="create()"> -->
+        <form>
+        <div class="form-group row">
+            <label for="nombre" class="col-form-label col-sm-2">Nombre:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Ingresar nombre..." [(ngModel)]="cliente.nombre" name="nombre">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="cedula" class="col-form-label col-sm-2">Cédula:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Ingresar cédula.." [(ngModel)]="cliente.cedula" name="cedula">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="fecha" class="col-form-label col-sm-2">Fecha (yyyy-mm-dd):</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Ingresar fecha de nacimiento..." [(ngModel)]="cliente.fecha" name="fecha">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <button style="margin: 10px" class="btn btn-primary btn-sm" role="button" (click)="create()" *ngIf="!cliente.id else elseBlock">crear</button>
+                <ng-template #elseBlock>
+                    <button style="margin: 10px" class="btn btn-primary btn-sm" role="button" (click)="update()">Editar </button>
+                </ng-template>
+                <button style="margin: 10px" class="btn btn-primary btn-sm" role="button" (click)="volver()" >volver</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
