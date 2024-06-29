@@ -1,15 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/front-end/dist
+/front-end/tmp
+/front-end/out-tsc
+/front-end/bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+/front-end/node_modules
+/front-endnpm-debug.log
+/front-endyarn-error.log
 
 # IDEs and editors
 .idea/
@@ -29,14 +29,49 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/front-end/.angular/cache
 .sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+/front-end/connect.lock
+/front-end/coverage
+/front-end/libpeerconnection.log
 testem.log
-/typings
+/front-end/typings
 
 # System files
 .DS_Store
+Thumbs.db
+
+# .NET Core
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# NuGet
+*.nuget.props
+*.paket.props
+*.paket.targets
+*.lock.json
+packages/
+
+# IDE files
+*.vscode/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+*.dll
+*.pdb
+*.exe
+
+# Visual Studio Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
 Thumbs.db
