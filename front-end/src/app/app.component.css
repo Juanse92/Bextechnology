@@ -1,0 +1,30 @@
+.footer{
+  position: absolute;
+  bottom: 21px;
+  left: 17px;
+  display: flex;
+  align-items: flex-end;
+  color: #333333;
+  a{
+      img{
+          width: 250px;
+      }
+  }
+}
+h1 {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  color: rgb(151, 0, 0);
+  font-family: cursive;
+  text-align: center;
+}
+
+.encabezado {
+  border-bottom: 2px solid #b9b9b9;
+  display:flex;
+  overflow: hidden;
+}
+
+

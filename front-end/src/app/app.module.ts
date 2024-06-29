@@ -2,41 +2,36 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { LlenarDatosComponent } from './llenar-datos/llenar-datos.component';
-import { ClientesComponent } from './clientes/clientes.component';
-import { ClienteService } from './clientes/cliente.service';
-import { DirectivaComponent } from './directiva/directiva.component';
 import {HttpClientModule} from '@angular/common/http';
-import { RouterModule, Routes} from '@angular/router';
-import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
-
-
-const routes: Routes = [
-  {path: '', redirectTo: '/clientes', pathMatch: 'full'},
-  {path: 'directivas', component: DirectivaComponent},
-  {path: 'clientes', component: ClientesComponent},
-  {path: 'clientes/form', component: FormComponent},
-  {path: 'clientes/form/:id', component: FormComponent}
-];
+import { TableroCRUDComponent } from './tablero-crud/tablero-crud.component';
+import {TreeTableModule} from 'primeng/treetable';
+import { ButtonModule } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+import { PaisesService } from './service/paises.service';
+import { DepartamentoService } from './service/departamento.service';
+import { CiudadService } from './service/ciudad.service';
+import { DialogModule } from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    // LlenarDatosComponent,
-    DirectivaComponent,
-    ClientesComponent,
-    FormComponent
-  ],
+    TableroCRUDComponent
+    ],
   imports: [
     BrowserModule,
+    TooltipModule,
+    TreeTableModule,
+    ButtonModule,
+    BrowserAnimationsModule,
+    DialogModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
-    RouterModule.forRoot(routes)
+    FormsModule
   ],
-  providers: [ClienteService],
+  providers: [PaisesService,DepartamentoService,CiudadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
