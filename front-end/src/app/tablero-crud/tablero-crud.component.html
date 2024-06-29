@@ -1,0 +1,96 @@
+<div *ngIf="flag" style="margin: 2%;">
+  <p-treeTable [value]="registros" [scrollable]="true" [tableStyle]="{'min-width':'50rem'}">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Tipo</th>
+              <th>Nombre</th>
+              <th>
+                <p-button icon="pi pi-plus"
+                pTooltip="Crear pais"
+                tooltipPosition="right"
+                rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white'}"
+                (click)="flagDiag=true;pais='';titleDiag='pais';crud='POST'"/>
+              </th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+          <tr [ttRow]="rowNode">
+              <td [style]="{'width': '20rem'}">
+                <ng-container *ngIf="rowNode.level==0">
+                    PAIS
+                </ng-container>
+                <ng-container *ngIf="rowNode.level==1">
+                    DEPARTAMENTO
+                </ng-container>
+                <ng-container *ngIf="rowNode.level==2">
+                    CIUDAD
+                </ng-container>
+              </td>
+              <td>
+                  <p-treeTableToggler [rowNode]="rowNode" />
+                  {{ rowData.nombre }}
+              </td>
+              <td>
+                <ng-container *ngIf="rowNode.level==0">
+                  <p-button icon="pi pi-pencil"
+                  pTooltip="Modificar pais"  tooltipPosition="right"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'background': 'green','color':'white' }"
+                  (click)="flagDiag=true;pais=rowData.nombre;idPais=rowData.id;titleDiag='pais';crud='PUT'"/>
+                  <p-button icon="pi pi-trash"
+                  pTooltip="Eliminar pais"  tooltipPosition="right"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'background': 'red','color':'white' }"
+                  (click)="delete('pais',rowNode)"/>
+                  <p-button icon="pi pi-plus"
+                  pTooltip="Crear departamento"  tooltipPosition="right"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white' }"
+                  (click)="flagDiag=true;departamento='';titleDiag='departamento';idPais=rowData.id;crud='POST'"/>
+                </ng-container>
+                <ng-container *ngIf="rowNode.level==1">
+                  <p-button icon="pi pi-pencil"
+                  pTooltip="Modificar departamento"  tooltipPosition="right"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'background': 'green','color':'white' }"
+                  (click)="flagDiag=true;departamento=rowData.nombre;idPais=rowNode.parent.data.id;idDepartamento=rowNode.node.data.id;titleDiag='departamento';crud='PUT'"/>
+                  <p-button icon="pi pi-trash"
+                  pTooltip="Eliminar departamento"  tooltipPosition="right"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'background': 'red','color':'white' }"
+                  (click)="delete('departamento',rowNode)"/>
+                  <p-button icon="pi pi-plus"
+                  pTooltip="Crear ciudad"  tooltipPosition="right"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white' }"
+                  (click)="flagDiag=true;ciudad='';titleDiag='ciudad';idPais=rowNode.parent.data.id;idDepartamento=rowData.id;crud='POST'"/>
+                </ng-container>
+                <ng-container *ngIf="rowNode.level==2">
+                  <p-button icon="pi pi-pencil"
+                  pTooltip="Modificar ciudad"  tooltipPosition="right"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'background': 'green','color':'white' }"
+                  (click)="flagDiag=true;ciudad=rowData.nombre;idPais=rowNode.parent.parent.data.id;idDepartamento=rowNode.parent.data.id;idCiudad=rowNode.node.data.id;titleDiag='ciudad';crud='PUT'"/>
+                  <p-button icon="pi pi-trash"
+                  pTooltip="Eliminar ciudad"  tooltipPosition="right"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'background': 'red','color':'white' }"
+                  (click)="delete('ciudad',rowNode)"/>
+                </ng-container>
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td>&nbsp;</td>
+          <td [attr.colspan]="2">No hay paises registrados.</td>
+        </tr>
+    </ng-template>
+  </p-treeTable>
+</div>
+<p-dialog [(visible)]="flagDiag" modal="true" [style]="{width:'35%'}" [header]="'Registro de '+titleDiag">
+  <div>
+    Nombre de {{titleDiag}}:&nbsp;
+    <ng-container *ngIf="titleDiag=='pais'"><input tyepe="text" [(ngModel)]="pais"></ng-container>
+    <ng-container *ngIf="titleDiag=='departamento'"><input tyepe="text" [(ngModel)]="departamento"></ng-container>
+    <ng-container *ngIf="titleDiag=='ciudad'"><input tyepe="text" [(ngModel)]="ciudad"></ng-container>
+  </div><br>
+  <div style="width: 100%;">
+    <p-button icon="pi pi-check"
+    [pTooltip]="'Crear ' + titleDiag"  tooltipPosition="right"
+      [style]="{ 'margin-right': '.5em' }"
+     (click)="CRUD()"/>
+  </div>
+</p-dialog>
