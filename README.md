@@ -15,7 +15,7 @@ npm i
 ```
 
 ## Proyecto(.NET Core)
-Crear las tablas en la base de datos SQL server ejecutando el siguiente sql
+Crear las tablas en la base de datos SQL server ejecutando el siguiente script SQL
 <br>
 ```
 CREATE TABLE pais(
