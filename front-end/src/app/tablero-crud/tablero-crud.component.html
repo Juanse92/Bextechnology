@@ -8,7 +8,7 @@
                 <p-button icon="pi pi-plus"
                 pTooltip="Crear pais"
                 tooltipPosition="right"
-                rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white'}"
+                rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white' ,'background': 'blue'}"
                 (click)="flagDiag=true;pais='';titleDiag='pais';crud='POST'"/>
               </th>
           </tr>
@@ -42,7 +42,7 @@
                   (click)="delete('pais',rowNode)"/>
                   <p-button icon="pi pi-plus"
                   pTooltip="Crear departamento"  tooltipPosition="right"
-                  rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white' }"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white','background': 'blue' }"
                   (click)="flagDiag=true;departamento='';titleDiag='departamento';idPais=rowData.id;crud='POST'"/>
                 </ng-container>
                 <ng-container *ngIf="rowNode.level==1">
@@ -56,7 +56,7 @@
                   (click)="delete('departamento',rowNode)"/>
                   <p-button icon="pi pi-plus"
                   pTooltip="Crear ciudad"  tooltipPosition="right"
-                  rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white' }"
+                  rounded="true" [style]="{ 'margin-right': '.5em' ,'color':'white','background': 'blue' }"
                   (click)="flagDiag=true;ciudad='';titleDiag='ciudad';idPais=rowNode.parent.data.id;idDepartamento=rowData.id;crud='POST'"/>
                 </ng-container>
                 <ng-container *ngIf="rowNode.level==2">
