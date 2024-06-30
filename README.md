@@ -23,7 +23,6 @@ CREATE TABLE pais(
 	pais varchar(255) NOT NULL
 );
 ```
-<br>
 ```
 CREATE TABLE departamento(
 	id int IDENTITY(1,1) primary key,
@@ -32,7 +31,6 @@ CREATE TABLE departamento(
 	FOREIGN KEY (fk_pais_id) REFERENCES pais(id)
 );
 ```
-<br>
 ```
 CREATE TABLE ciudad(
 	id int IDENTITY(1,1) primary key,
